@@ -3,34 +3,32 @@ import {connect} from 'react-redux';
 import iconDown from './../../images/thumbs-down-regular.svg';
 import iconUp from './../../images/thumbs-up-regular.svg';
 
+
+// One block for movie
 function OneMovie(elt) {
-    const [deleted, setDeleted] = useState(0);
     const [likes, setLikes] = useState(elt.likes);
     const [dislikes, setDislikes] = useState(elt.dislikes);
     const [liked, setLiked] = useState(false);
     const [likesRatio, setLikesRatio] = useState(0);
-    var data;
+
+
+    // state of likes || dislikes ratio
     useEffect(() => {
         var res = parseFloat(likes) * 100 / (parseFloat(likes) + parseFloat(dislikes)) + '%';
         setLikesRatio(res);
     });
-    if (elt) {
-        // data = props.result;
 
+    if (elt) {
 
         function handleLikeItem() {
-
             if (liked == true) {
                 setDislikes(parseFloat(dislikes) + 1);
-                //setLikes(parseFloat(likes) - 1);
             } else {
                 setLikes(parseFloat(likes) + 1);
-                //setDislikes(parseFloat(dislikes) - 1);
             }
             setLiked(!liked);
 
         };
-
 
         return (
             <div>

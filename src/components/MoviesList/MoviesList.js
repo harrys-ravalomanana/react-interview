@@ -4,24 +4,28 @@ import {connect} from 'react-redux';
 import {setResult, setPaginate, setAllResult} from '../../redux/actions';
 import ShowMovies from './ShowMovies';
 
-function MoviesList (props){
+//Movies List
+function MoviesList(props) {
+
+    // Get the json data every time if it is changed
     useEffect(() => {
         moviesData.then(function (result) {
+            //data depending on search
             props.setResult(result);
+            //data depending on paginate
             props.setPaginate(result);
+            //default data || data after deleting items
             props.setAllResult(result);
 
         });
 
     });
 
-
-        return (
-            <div>
-
-                <ShowMovies />
-            </div>
-        );
+    return (
+        <div>
+            <ShowMovies/>
+        </div>
+    );
 }
 
 export default connect(

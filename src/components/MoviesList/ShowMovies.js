@@ -1,20 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {getResult, getAllResult, getPaginate} from "../../redux/selectors";
 import OneMovie from "./OneMovie";
 import SearchCategory from "./SearchCategory";
 import Paginate from "./Paginate";
-import {setResult,setCategories, setAllResult} from "../../redux/actions";
+import {setResult, setCategories, setAllResult} from "../../redux/actions";
 
 function ShowMovies(props) {
     var initData;
     var data;
 
     if (props.paginate && props.allresult) {
-        if(props.paginate) {
-            data = props.paginate;
-        }
-        //data = props.result;
+        data = props.paginate;
+
         initData = props.allresult;
         const categ = [...new Set(initData.map(it => it.category))];
         props.setCategories(categ);

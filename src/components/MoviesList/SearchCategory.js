@@ -1,17 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Multiselect from 'multiselect-react-dropdown';
 import {getCategories, getAllResult} from "../../redux/selectors";
 import {setResult, setCategories} from "../../redux/actions";
 
-
+// Category filter
 function SearchCategory(props) {
 
     var initData;
     var categoriesList;
 
     if (props.categories && props.allresult) {
-
         initData = props.allresult;
         categoriesList = props.categories;
 
@@ -20,8 +19,8 @@ function SearchCategory(props) {
             options.push(
                 {name: categoriesList[i], id: i}
             );
-
         }
+
         const updateResult = (selectedList) => {
             var res = [];
             var selectedData;
@@ -57,9 +56,7 @@ function SearchCategory(props) {
             emptyRecordMsg = "Aucune  autre categorie disponible"
         />
 
-
     }
-
     return null
 }
 
@@ -68,7 +65,6 @@ export default connect(
         allresult: getAllResult(state),
         categories: getCategories(state),
     }),
-    // null
     {
         setResult,
         setCategories

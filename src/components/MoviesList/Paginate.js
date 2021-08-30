@@ -7,20 +7,16 @@ import {setPaginate, setResult} from "../../redux/actions";
 function Paginate(props) {
 
     var data;
-    var paginateList = [4, 8, 12];
-    // var recordsPerPage = 4;
     var current = 1;
     const [paginationItem, setPaginationItem] = useState(0);
     const [recordsPerPage, setRecordsPerPage] = useState(4);
-    let options = [{name: '4', id: 1}, {name: '8', id: 2}, {name: '12', id: 3}]
+    let options = [{name: '4', id: 1}, {name: '8', id: 2}, {name: '12', id: 3}];
     if (props.result) {
-
         data = props.result;
 
-
+        //Number of pages
         function numPages() {
             return Math.ceil(data.length / recordsPerPage);
-
         }
 
         changePage(1);
